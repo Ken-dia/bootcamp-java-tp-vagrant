@@ -11,9 +11,9 @@ echo $JAVA_HOME
 
 ## Installation de tomcat
 
-sudo wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.23/bin/apache-tomcat-10.1.23.tar.gz
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.24/bin/apache-tomcat-10.1.24.tar.gz
 sudo mkdir -p /opt/tomcat
-sudo tar xzvf apache-tomcat-10.1.23.tar.gz -C /opt/tomcat --strip-components=1
+sudo tar xzvf apache-tomcat-10.1.24.tar.gz -C /opt/tomcat --strip-components=1
 sudo groupadd tomcat
 sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 sudo chown -R tomcat: /opt/tomcat
