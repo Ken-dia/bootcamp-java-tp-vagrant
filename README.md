@@ -15,6 +15,7 @@
 5. ## Configuration de postgresql
 - Créer un nouvel utilisateur et une base de données
 >sudo -u postgres psql
+
 > CREATE USER kendia WITH PASSWORD 'votre_mot_passe';
 >CREATE DATABASE secureapp_db;
 >GRANT ALL PRIVILEGES ON DATABASE secureapp_db TO kendia;
@@ -24,7 +25,12 @@
 - - Ajoutez une ligne pour autoriser les connexions à distance
 >  host    secureapp_d    kendia    172.16.238.10/32    md5
 - - Modifiez le fichier postgresql.conf pour permettre les connexions à distance
+> sudo nano /etc/postgresql/14/main/postgresql.conf
+- - recherchez la ligne *listen_addresses*. Elle devrait être définie comme suit :
+> listen_addresses = '*'
 - - Redémarrez le serveur PostgreSQL
 > sudo systemctl restart postgresql
-- Configurez le pare-feu
->
+- Configurez le pare-feu en tapant la commande suivante
+>sudo ufw allow from 172.16.238.10 to any port 5432
+- Verifier la connectivité entre les deux serveur en tapant la commande suivante sur la machine *devapp01*
+> telnet 172.16.238.11 5432
